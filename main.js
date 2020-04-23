@@ -126,7 +126,7 @@
         expenses : {},
         optionalExpenses : {},
         income : [],
-        saving : false
+        saving : true
     };
 
     console.log( money + '-' + time );
