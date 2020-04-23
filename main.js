@@ -116,7 +116,8 @@
         while( isNaN(money) || money == '' || money == null ){
             money = +prompt("Ваш бюджет на месяц?", "");
         }
-    }
+    };
+    start();
     
 
     let appData = {
@@ -130,26 +131,30 @@
 
     console.log( money + '-' + time );
 
-    for ( let i = 0; i < 2; i++ ) {
+    function chooseExpenses() {
+        for ( let i = 0; i < 2; i++ ) {
 
-        let a = prompt("Введите обязательную статью расходов в этом месяце", ""),
-            b = +prompt("Во сколько обойдется?", "");
+            let a = prompt("Введите обязательную статью расходов в этом месяце", ""),
+                b = +prompt("Во сколько обойдется?", "");
 
-        if ( 
-                (typeof(a))==='string' 
-                && (typeof(a)) != null 
-                && (typeof(b)) != null 
-                && a !='' 
-                && b !=''   
-            ) {
-                 console.log(appData.expenses[a] = b);
-                 appData.expenses[a] = b; 
-        } else { 
-            i = 0;
-        };  
+            if ( 
+                    (typeof(a))==='string' 
+                    && (typeof(a)) != null 
+                    && (typeof(b)) != null 
+                    && a !='' 
+                    && b !=''   
+                ) {
+                    console.log(appData.expenses[a] = b);
+                    appData.expenses[a] = b; 
+            } else { 
+                i = 0;
+            };  
+        };
     };
+    chooseExpenses();
 
-    appData.moneyPerDay = appData.budget / 30;
+    appData.moneyPerDay = (appData.budget / 30).toFixed();
+
     alert("Ежедневный бюджет :" + appData.moneyPerDay);
 
     if( appData.moneyPerDay < 1000 ) {
@@ -159,6 +164,19 @@
     } else if ( appData.moneyPerDay > 2000 ) {
         console.log('У вас высокий доход');
     };
+
+    // Ф-ция которая считает накопления с депозита (если он есть)
+    function checkSavings() {
+        if( appData.saving == true ) {
+            let save = +prompt("Какова сумма накоплений?") = +prompt("Какова сумма накоплений?"),
+                percent = +prompt("Под какой процент?");
+
+            // Прибль за месяц
+            appData.monthIncome = save/100/12*percent;   
+            alert('Доход в месяц с вашего депозита :' + appData.monthIncome)
+        } 
+    }
+    function checkSavings();
 
     // appData.expenses[a] = b;
 
