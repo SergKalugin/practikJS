@@ -108,8 +108,16 @@
     // }
 
 // Задание 1
-    let money = +prompt("Ваш бюджет на месяц?", "");
-    let time  = prompt("Введите дату в формате YYYY-MM-DD", "");
+    let money, time; //глобальные переменные
+    function start() {
+        money = +prompt("Ваш бюджет на месяц?", "");
+        time  = prompt("Введите дату в формате YYYY-MM-DD", "");
+
+        while( isNaN(money) || money == '' || money == null ){
+            money = +prompt("Ваш бюджет на месяц?", "");
+        }
+    }
+    
 
     let appData = {
         budget : money,
